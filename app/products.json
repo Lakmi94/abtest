@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "name": "HP 1000 – Wired Mouse 1200 DPI with 2 Buttons and Scroll Wheel, 1.5 m Cable, USB Connection, Windows, Black",
+    "price": 6.99,
+    "label": "",
+    "imageUrl": "/images/1.png"
+  },
+  {
+    "id": 2,
+    "name": "Amazon Basics 3 Button Mouse with USB Cable, Silent Standard, Black",
+    "price": 4.99,
+    "label": "500+ bought",
+    "imageUrl": "/images/2.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Logitech M240 Silent Bluetooth Mouse, Wireless, Compact, Portable, Smooth Tracking, Battery 18 Months, Windows, MacOS, ChromeOS, Compatible with PC, Mac, Laptops, Tablets - Graphite",
+    "price": 19.99,
+    "label": "100+ bought",
+    "imageUrl": "/images/3.png"
+  },
+  {
+    "id": 4,
+    "name": "acer Ergonomic Wireless Mouse, 2.4 GHz Wireless Mouse with 3 DPI Adjustable Levels, Optical Wireless Mouse with 6 Buttons, Battery Operated for Laptops, PC and MacBook",
+    "price": 14.99,
+    "label": "",
+    "imageUrl": "/images/4.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Apple Magic Mouse: Rechargeable, Bluetooth Connected and Compatible with Mac and iPad; White, Multi-Touch Surface (USB-C)",
+    "price": 79.99,
+    "label": "",
+    "imageUrl": "/images/5.png"
+  },
+  {
+    "id": 6,
+    "name": "Logitech M240 Silent Bluetooth Mouse, Wireless, Compact, Portable, Smooth Tracking, Battery 18 Months, Windows, MacOS, ChromeOS, Compatible with PC, Mac, Laptops, Tablets - Pink",
+    "price": 13.95,
+    "label": "",
+    "imageUrl": "/images/6.png"
+  },
+  {
+    "id": 7,
+    "name": "Uineer Ergonomic wireless mouse, Bluetooth multi-device mouse (2.4G + BT4.0/BT5.0), 4 DPI adjustable, comfort and stress reduction on the wrist, ideal for use at home, office, pink",
+    "price": 28.99,
+    "label": "500+ bought",
+    "imageUrl": "/images/7.png"
+  },
+  {
+    "id": 8,
+    "name": "cimetech Rechargeable Wireless Mouse, 2.4G & Bluetooth Mouse for Laptop, Silent Mouse Ergonomic Design with Nano USB Receiver & DPI 3 Levels of Adjustment Compatible with Macbook iPad Computers",
+    "price": 13.03,
+    "label": "500+ bought",
+    "imageUrl": "/images/8.png"
+  },
+  {
+    "id": 9,
+    "name": "Razer DeathAdder Essential - Gaming Mouse, Optical Sensor, 6400 DPI, 5 Programmable Buttons, Mechanical Switches, Rubber Side Grips - Black",
+    "price": 18.47,
+    "label": "",
+    "imageUrl": "/images/9.png"
+  }
+]
