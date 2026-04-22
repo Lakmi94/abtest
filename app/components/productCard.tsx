@@ -43,13 +43,15 @@ export default function ProductCard({
             ""
           )}
         </div>
-
-      <button 
-  className="bg-blue-500 hover:bg-blue-600 cursor-pointer transition-colors duration-200 text-white font-semibold px-4 py-2 rounded-md w-full mt-4" 
-  onClick={() => setIsClicked(true)} 
->
-  {isClicked ? "Added to Cart" : "Add to Cart"}
-</button>
+        <button
+          className={`font-semibold px-4 py-2 rounded-md w-full mt-4 cursor-pointer transition-colors duration-200 ${
+            isClicked
+              ? "text-blue-500 border-2 border-blue-500"
+              : "text-white bg-blue-500 hover:bg-blue-600"
+          }`}
+          onClick={() => setIsClicked(true)}>
+          {isClicked ? "Added to Cart" : "Add to Cart"}
+        </button>
       </div>
     </div>
   );
