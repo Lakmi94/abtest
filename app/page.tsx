@@ -5,12 +5,12 @@ import ProductCard from "./components/productCard";
 import productData from "./products.json";
 
 const random = [
-  2, 1, 1, 2, 2, 1, 2, 2, 1, 1, 2, 1, 2, 1, 1, 2, 1, 2, 2, 1, 1, 2, 2, 1, 2,
-  1, 2, 1, 2, 1,
+  "B", "A", "A", "B", "B", "A", "B", "B", "A", "A", "B", "A", "B", "A", "A", "B", "A", "B", "B", "A", "A", "B", "B", "A", "B",
+  "A", "B", "A", "B", "A",
 ];
 
 export default function Home() {
-  const [currentValue, setCurrentValue] = useState<number>(1);
+  const [currentValue, setCurrentValue] = useState<string>("A");
   const [searchQuery, setSearchQuery] = useState("");
   const [participantId, setParticipantId] = useState<string>("");
   const [sessionId, setSessionId] = useState<string>("");

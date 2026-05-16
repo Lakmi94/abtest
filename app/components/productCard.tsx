@@ -8,7 +8,7 @@ export default function ProductCard({
   onAddToCart,
 }: {
   product: Product;
-  version: number;
+  version: string;
   onAddToCart: (product: Product) => void;
 }) {
   const [isClicked, setIsClicked] = useState(false);
@@ -37,7 +37,7 @@ export default function ProductCard({
           <p className="text-black mt-4 text-xl font-extrabold">
             ${product.price}
           </p>
-          {product.label.length > 0 && version === 1 ? (
+          {product.label.length > 0 && version === "B" ? (
             <p className="text-gray-950 bg-amber-400 mt-2 w-30 p-0.5 text-center rounded-md">
               {product.label}
             </p>
