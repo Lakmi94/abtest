@@ -58,7 +58,7 @@ export default async function EventsDashboardPage() {
       <div className="min-h-screen bg-zinc-50 text-slate-900 py-16 px-4">
         <div className="max-w-6xl mx-auto rounded-3xl border border-slate-200 bg-white p-10 shadow-sm">
           <h1 className="text-3xl font-semibold">Experiment Data Collection</h1>
-          <p className="mt-4 text-slate-600">Missing Supabase configuration.</p>
+          <p className="mt-4 text-slate-900">Missing Supabase configuration.</p>
         </div>
       </div>
     );
@@ -69,8 +69,8 @@ export default async function EventsDashboardPage() {
       <div className="min-h-screen bg-zinc-50 text-slate-900 py-16 px-4">
         <div className="max-w-6xl mx-auto rounded-3xl border border-slate-200 bg-white p-10 shadow-sm">
           <h1 className="text-3xl font-semibold">Experiment Data Collection</h1>
-          <p className="mt-4 text-slate-600">Failed to load experiment events.</p>
-          <pre className="mt-4 rounded-xl bg-slate-100 p-4 text-xs text-red-700">
+          <p className="mt-4 text-slate-900">Failed to load experiment events.</p>
+          <pre className="mt-4 rounded-xl bg-slate-100 p-4 text-xs text-red-900">
             {error.message}
           </pre>
         </div>
@@ -82,12 +82,12 @@ export default async function EventsDashboardPage() {
     <div className="min-h-screen bg-zinc-50 py-16 px-4">
       <div className="max-w-7xl mx-auto rounded-3xl border border-slate-200 bg-white p-10 shadow-sm">
         <h1 className="text-3xl font-semibold">Experiment Data Collection</h1>
-        <p className="mt-3 text-slate-600">Latest 100 logged events from the online experiment.</p>
-        <p className="mt-1 text-sm text-slate-500">Refresh the page to see newly collected events.</p>
+        <p className="mt-3 text-slate-900">Latest 100 logged events from the online experiment.</p>
+        <p className="mt-1 text-sm text-slate-800">Refresh the page to see newly collected events.</p>
 
         <div className="mt-8 overflow-x-auto rounded-xl border border-slate-200">
           <table className="min-w-full border-collapse text-left text-xs">
-            <thead className="bg-slate-100 text-slate-700 uppercase">
+            <thead className="bg-slate-100 text-slate-900 uppercase">
               <tr>
                 <th className="border-b border-slate-200 px-3 py-3">ID</th>
                 <th className="border-b border-slate-200 px-3 py-3">Created At</th>
