@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AB Test Shop Portal
 
-## Getting Started
+This is a [Next.js](https://nextjs.org) project with A/B test instrumentation. Events are logged in Supabase for `page_load`, `search`, and `add_to_cart` actions.
 
-First, run the development server:
+## Local Setup
+
+1. Copy the example env file:
+
+```bash
+cp .env.example .env.local
+```
+
+2. Set the following values in `.env.local`:
+
+```env
+SUPABASE_URL=
+SUPABASE_SERVICE_ROLE_KEY=
+```
+
+3. Install dependencies:
+
+```bash
+npm install
+```
+
+4. Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Supabase Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a Supabase project and add a table named `experiment_events` with the following schema:
 
-## Learn More
+- `id`: bigint, primary key, generated identity
+- `created_at`: timestamptz, default `now()`
+- `participant_id`: text
+- `session_id`: text
+- `condition`: integer
+- `event_type`: text
+- `client_timestamp`: timestamptz
+- `server_timestamp`: timestamptz
+- `time_since_page_load`: integer
+- `page`: text, nullable
+- `search_query`: text, nullable
+- `product_id`: text, nullable
+- `product_name`: text, nullable
+- `product_price`: numeric, nullable
+- `product_label`: text, nullable
+- `raw_event`: jsonb
 
-To learn more about Next.js, take a look at the following resources:
+## Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Use `.env.local` for local secrets. Do not commit `.env.local`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Required variables:
 
-## Deploy on Vercel
+```env
+SUPABASE_URL=
+SUPABASE_SERVICE_ROLE_KEY=
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment on Vercel
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push your project to GitHub.
+2. Create a new Vercel project from the repository.
+3. Add the environment variables in Vercel:
+   - `SUPABASE_URL`
+   - `SUPABASE_SERVICE_ROLE_KEY`
+4. Deploy the app.
+
+## Testing Event Collection
+
+1. Open the deployed website or local app.
+2. Search for `mouse`.
+3. Click `Add to Cart` on a product.
+4. Verify the `experiment_events` table in Supabase.
+
+Collected events include:
+
+- `page_load`
+- `search`
+- `add_to_cart`
+
+Each event includes `participantId`, `sessionId`, `condition`, `timestamp`, and `timeSincePageLoad`.

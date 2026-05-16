@@ -1,38 +1,61 @@
-import { promises as fs } from "fs";
-import path from "path";
 import { NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
 
-const dataDirectory = path.join(process.cwd(), "data");
-const eventsFilePath = path.join(dataDirectory, "events.json");
+const supabaseUrl = process.env.SUPABASE_URL ?? "";
+const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY ?? "";
 
 export async function POST(request: Request) {
   try {
+    if (!supabaseUrl || !supabaseServiceRoleKey) {
+      return NextResponse.json(
+        { success: false, error: "Missing Supabase configuration." },
+        { status: 500 }
+      );
+    }
+
     const event = await request.json();
     const serverTimestamp = new Date().toISOString();
     const eventWithServerTimestamp = { ...event, serverTimestamp };
 
-    await fs.mkdir(dataDirectory, { recursive: true });
+    const supabase = createClient(supabaseUrl, supabaseServiceRoleKey, {
+      auth: {
+        persistSession: false,
+      },
+    });
 
-    let events: unknown[] = [];
-    try {
-      const existing = await fs.readFile(eventsFilePath, "utf8");
-      events = JSON.parse(existing ?? "[]");
-      if (!Array.isArray(events)) {
-        events = [];
-      }
-    } catch (error) {
-      const err = error as { code?: string };
-      if (err.code !== "ENOENT") {
-        throw error;
-      }
+    const { data, error } = await supabase.from("experiment_events").insert([
+      {
+        participant_id: event.participantId ?? null,
+        session_id: event.sessionId ?? null,
+        condition: event.condition ?? null,
+        event_type: event.eventType ?? null,
+        client_timestamp: event.timestamp ?? null,
+        server_timestamp: serverTimestamp,
+        time_since_page_load: event.timeSincePageLoad ?? null,
+        page: event.page ?? null,
+        search_query: event.searchQuery ?? null,
+        product_id:
+          event.productId !== undefined && event.productId !== null
+            ? String(event.productId)
+            : null,
+        product_name: event.productName ?? null,
+        product_price: event.productPrice ?? null,
+        product_label: event.productLabel ?? null,
+        raw_event: eventWithServerTimestamp,
+      },
+    ]);
+
+    if (error) {
+      console.error("Supabase insert error:", error);
+      return NextResponse.json(
+        { success: false, error: error.message },
+        { status: 500 }
+      );
     }
 
-    events.push(eventWithServerTimestamp);
-    await fs.writeFile(eventsFilePath, JSON.stringify(events, null, 2), "utf8");
-
-    return NextResponse.json({ success: true, event: eventWithServerTimestamp });
+    return NextResponse.json({ success: true, data });
   } catch (error) {
-    console.error("Error saving event:", error);
+    console.error("Error saving event to Supabase:", error);
     return NextResponse.json(
       { success: false, error: "Unable to save event." },
       { status: 500 }
