@@ -86,3 +86,10 @@ Collected events include:
 - `add_to_cart`
 
 Each event includes `participantId`, `sessionId`, `condition`, `timestamp`, and `timeSincePageLoad`.
+
+## Data Dashboard
+
+- Test website URL placeholder: `https://your-project.vercel.app`
+- Data dashboard URL placeholder: `https://your-project.vercel.app/admin/events`
+
+The `/admin/events` page displays the latest 100 events from Supabase, including page load, search, and add-to-cart activity.
