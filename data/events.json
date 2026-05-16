@@ -1,0 +1,125 @@
+[
+  {
+    "participantId": "f0f5304e-2d58-4d38-b61c-d3ad51439958",
+    "sessionId": "c6c4b372-bc2b-4bec-b8bb-bb07706cadc9",
+    "condition": 1,
+    "eventType": "page_load",
+    "timestamp": "2026-05-15T19:38:43.513Z",
+    "timeSincePageLoad": 5,
+    "page": "shop_portal",
+    "serverTimestamp": "2026-05-15T19:38:43.656Z"
+  },
+  {
+    "participantId": "f0f5304e-2d58-4d38-b61c-d3ad51439958",
+    "sessionId": "c6c4b372-bc2b-4bec-b8bb-bb07706cadc9",
+    "condition": 1,
+    "eventType": "search",
+    "timestamp": "2026-05-15T19:38:48.159Z",
+    "timeSincePageLoad": 4651,
+    "searchQuery": "mouse",
+    "serverTimestamp": "2026-05-15T19:38:48.172Z"
+  },
+  {
+    "participantId": "f0f5304e-2d58-4d38-b61c-d3ad51439958",
+    "sessionId": "8ffccf15-c34c-4ccd-ae1f-533386866328",
+    "condition": 1,
+    "eventType": "page_load",
+    "timestamp": "2026-05-15T19:38:53.883Z",
+    "timeSincePageLoad": 3,
+    "page": "shop_portal",
+    "serverTimestamp": "2026-05-15T19:38:53.887Z"
+  },
+  {
+    "participantId": "f0f5304e-2d58-4d38-b61c-d3ad51439958",
+    "sessionId": "150bd466-d1db-471e-b3c1-f96e0719ad10",
+    "condition": 2,
+    "eventType": "page_load",
+    "timestamp": "2026-05-15T19:38:54.781Z",
+    "timeSincePageLoad": 2,
+    "page": "shop_portal",
+    "serverTimestamp": "2026-05-15T19:38:54.784Z"
+  },
+  {
+    "participantId": "f0f5304e-2d58-4d38-b61c-d3ad51439958",
+    "sessionId": "82d52b99-8dc1-4ef9-8010-402d2a7797c1",
+    "condition": 2,
+    "eventType": "page_load",
+    "timestamp": "2026-05-15T19:38:55.533Z",
+    "timeSincePageLoad": 5,
+    "page": "shop_portal",
+    "serverTimestamp": "2026-05-15T19:38:55.541Z"
+  },
+  {
+    "participantId": "f0f5304e-2d58-4d38-b61c-d3ad51439958",
+    "sessionId": "14a2e7bc-9b33-4bed-b437-34f354dc5816",
+    "condition": 1,
+    "eventType": "page_load",
+    "timestamp": "2026-05-15T19:38:56.074Z",
+    "timeSincePageLoad": 5,
+    "page": "shop_portal",
+    "serverTimestamp": "2026-05-15T19:38:56.077Z"
+  },
+  {
+    "participantId": "f0f5304e-2d58-4d38-b61c-d3ad51439958",
+    "sessionId": "0fb1b324-a7ee-4f57-a723-3b1d27834343",
+    "condition": 2,
+    "eventType": "page_load",
+    "timestamp": "2026-05-15T19:38:56.246Z",
+    "timeSincePageLoad": 3,
+    "page": "shop_portal",
+    "serverTimestamp": "2026-05-15T19:38:56.249Z"
+  },
+  {
+    "participantId": "f0f5304e-2d58-4d38-b61c-d3ad51439958",
+    "sessionId": "c09fa5e6-bbd2-474a-bdfa-18a805024baa",
+    "condition": 2,
+    "eventType": "page_load",
+    "timestamp": "2026-05-15T19:38:56.701Z",
+    "timeSincePageLoad": 3,
+    "page": "shop_portal",
+    "serverTimestamp": "2026-05-15T19:38:56.706Z"
+  },
+  {
+    "participantId": "f0f5304e-2d58-4d38-b61c-d3ad51439958",
+    "sessionId": "c09fa5e6-bbd2-474a-bdfa-18a805024baa",
+    "condition": 2,
+    "eventType": "search",
+    "timestamp": "2026-05-15T19:39:00.105Z",
+    "timeSincePageLoad": 3407,
+    "searchQuery": "mouse",
+    "serverTimestamp": "2026-05-15T19:39:00.123Z"
+  },
+  {
+    "participantId": "0298c686-aab3-4618-ae66-35234fc3c37d",
+    "sessionId": "bd8438a8-067f-42bb-9588-3c3d455a701d",
+    "condition": 2,
+    "eventType": "page_load",
+    "timestamp": "2026-05-16T09:52:01.810Z",
+    "timeSincePageLoad": 6,
+    "page": "shop_portal",
+    "serverTimestamp": "2026-05-16T09:52:01.816Z"
+  },
+  {
+    "participantId": "0298c686-aab3-4618-ae66-35234fc3c37d",
+    "sessionId": "bd8438a8-067f-42bb-9588-3c3d455a701d",
+    "condition": 2,
+    "eventType": "search",
+    "timestamp": "2026-05-16T09:52:04.961Z",
+    "timeSincePageLoad": 3157,
+    "searchQuery": "mouse",
+    "serverTimestamp": "2026-05-16T09:52:04.971Z"
+  },
+  {
+    "participantId": "0298c686-aab3-4618-ae66-35234fc3c37d",
+    "sessionId": "bd8438a8-067f-42bb-9588-3c3d455a701d",
+    "condition": 2,
+    "eventType": "add_to_cart",
+    "timestamp": "2026-05-16T09:52:08.501Z",
+    "timeSincePageLoad": 6697,
+    "productId": 1,
+    "productName": "HP 1000 – Wired Mouse 1200 DPI with 2 Buttons and Scroll Wheel, 1.5 m Cable, USB Connection, Windows, Black",
+    "productPrice": 6.99,
+    "productLabel": "",
+    "serverTimestamp": "2026-05-16T09:52:08.506Z"
+  }
+]

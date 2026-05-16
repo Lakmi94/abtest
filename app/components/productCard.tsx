@@ -5,9 +5,11 @@ import Image from "next/image";
 export default function ProductCard({
   product,
   version,
+  onAddToCart,
 }: {
   product: Product;
   version: number;
+  onAddToCart: (product: Product) => void;
 }) {
   const [isClicked, setIsClicked] = useState(false);
   return (
@@ -49,7 +51,10 @@ export default function ProductCard({
               ? "text-blue-500 border-2 border-blue-500"
               : "text-white bg-blue-500 hover:bg-blue-600"
           }`}
-          onClick={() => setIsClicked(true)}>
+          onClick={() => {
+            setIsClicked(true);
+            onAddToCart(product);
+          }}>
           {isClicked ? "Added to Cart" : "Add to Cart"}
         </button>
       </div>

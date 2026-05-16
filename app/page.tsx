@@ -1,21 +1,23 @@
-"use client"; 
-import { useEffect, useState } from "react";
+"use client";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Product } from "./interfaces/product";
 import ProductCard from "./components/productCard";
 import productData from "./products.json";
 
+const random = [
+  2, 1, 1, 2, 2, 1, 2, 2, 1, 1, 2, 1, 2, 1, 1, 2, 1, 2, 2, 1, 1, 2, 2, 1, 2,
+  1, 2, 1, 2, 1,
+];
+
 export default function Home() {
-  const [pageLoadIndex, setPageLoadIndex] = useState<number | null>(null);
   const [currentValue, setCurrentValue] = useState<number>(1);
   const [searchQuery, setSearchQuery] = useState("");
-
-  const products = productData.map((item) => (
-    <ProductCard key={item.id} product={item} version={currentValue} />
-  ));
-
-  const random = [
-    2, 1, 1, 2, 2, 1, 2, 2, 1, 1, 2, 1, 2, 1, 1, 2, 1, 2, 2, 1, 1, 2, 2, 1, 2,
-    1, 2, 1, 2, 1,
-  ];
+  const [participantId, setParticipantId] = useState<string>("");
+  const [sessionId, setSessionId] = useState<string>("");
+  const [versionReady, setVersionReady] = useState(false);
+  const pageLoadTimeRef = useRef<number>(0);
+  const pageLoadLoggedRef = useRef(false);
+  const searchLoggedRef = useRef(false);
 
   useEffect(() => {
     const storedIndex = localStorage.getItem("myArrayIndex");
@@ -26,14 +28,99 @@ export default function Home() {
     }
 
     localStorage.setItem("myArrayIndex", nextIndex.toString());
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setPageLoadIndex(nextIndex);
     const currentVersion = random[nextIndex % random.length];
-  setCurrentValue(currentVersion);
-
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setCurrentValue(currentVersion);
+    setVersionReady(true);
   }, []);
 
+  useEffect(() => {
+    const storedParticipantId = localStorage.getItem("participantId");
+    const nextParticipantId = storedParticipantId ?? crypto.randomUUID();
 
+    if (!storedParticipantId) {
+      localStorage.setItem("participantId", nextParticipantId);
+    }
+
+    pageLoadTimeRef.current = Date.now();
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setParticipantId(nextParticipantId);
+    setSessionId(crypto.randomUUID());
+  }, []);
+
+  const logEvent = useCallback(
+    async (eventType: string, eventData: Record<string, unknown> = {}) => {
+      if (!participantId || !sessionId) {
+        return;
+      }
+
+      const event = {
+        participantId,
+        sessionId,
+        condition: currentValue,
+        eventType,
+        timestamp: new Date().toISOString(),
+        timeSincePageLoad: Date.now() - pageLoadTimeRef.current,
+        ...eventData,
+      };
+
+      try {
+        const response = await fetch("/api/events", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(event),
+        });
+
+        if (!response.ok) {
+          console.error("Failed to log event", await response.text());
+        }
+      } catch (error) {
+        console.error("Failed to log event", error);
+      }
+    },
+    [participantId, sessionId, currentValue]
+  );
+
+  useEffect(() => {
+    if (!participantId || !sessionId || !versionReady || pageLoadLoggedRef.current) {
+      return;
+    }
+
+    pageLoadLoggedRef.current = true;
+    logEvent("page_load", { page: "shop_portal" });
+  }, [participantId, sessionId, versionReady, logEvent]);
+
+  useEffect(() => {
+    if (searchLoggedRef.current || searchQuery.trim().toLowerCase() !== "mouse") {
+      return;
+    }
+
+    searchLoggedRef.current = true;
+    logEvent("search", { searchQuery: searchQuery.trim() });
+  }, [searchQuery, logEvent]);
+
+  const handleAddToCart = useCallback(
+    (product: Product) => {
+      logEvent("add_to_cart", {
+        productId: product.id,
+        productName: product.name,
+        productPrice: product.price,
+        productLabel: product.label,
+      });
+    },
+    [logEvent]
+  );
+
+  const products = productData.map((item) => (
+    <ProductCard
+      key={item.id}
+      product={item}
+      version={currentValue}
+      onAddToCart={handleAddToCart}
+    />
+  ));
 
   // 2. Determine the current value (1 or 2)
   // The `% random.length` ensures that if nextIndex is 30, it loops back to 0.
