@@ -4,11 +4,6 @@ import { Product } from "./interfaces/product";
 import ProductCard from "./components/productCard";
 import productData from "./products.json";
 
-const random = [
-  "B", "A", "A", "B", "B", "A", "B", "B", "A", "A", "B", "A", "B", "A", "A", "B", "A", "B", "B", "A", "A", "B", "B", "A", "B",
-  "A", "B", "A", "B", "A",
-];
-
 export default function Home() {
   const [currentValue, setCurrentValue] = useState<string>("A");
   const [searchQuery, setSearchQuery] = useState("");
@@ -20,15 +15,8 @@ export default function Home() {
   const searchLoggedRef = useRef(false);
 
   useEffect(() => {
-    const storedIndex = localStorage.getItem("myArrayIndex");
-    let nextIndex = 0;
+    const currentVersion = Math.random() < 0.5 ? "A" : "B";
 
-    if (storedIndex !== null) {
-      nextIndex = parseInt(storedIndex, 10) + 1;
-    }
-
-    localStorage.setItem("myArrayIndex", nextIndex.toString());
-    const currentVersion = random[nextIndex % random.length];
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setCurrentValue(currentVersion);
     setVersionReady(true);
@@ -122,9 +110,6 @@ export default function Home() {
     />
   ));
 
-  // 2. Determine the current value (1 or 2)
-  // The `% random.length` ensures that if nextIndex is 30, it loops back to 0.
-  
   return (
     <div className="flex flex-col flex-1 min-h-screen bg-zinc-50 font-sans">
       {/* Header */}
