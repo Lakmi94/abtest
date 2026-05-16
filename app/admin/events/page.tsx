@@ -57,7 +57,7 @@ export default async function EventsDashboardPage() {
     return (
       <div className="min-h-screen bg-zinc-50 text-slate-900 py-16 px-4">
         <div className="max-w-6xl mx-auto rounded-3xl border border-slate-200 bg-white p-10 shadow-sm">
-          <h1 className="text-3xl font-semibold">Experiment Data Collection</h1>
+          <h1 className="text-3xl font-semibold text-gray-950">Experiment Data Collection</h1>
           <p className="mt-4 text-slate-900">Missing Supabase configuration.</p>
         </div>
       </div>
@@ -68,7 +68,7 @@ export default async function EventsDashboardPage() {
     return (
       <div className="min-h-screen bg-zinc-50 text-slate-900 py-16 px-4">
         <div className="max-w-6xl mx-auto rounded-3xl border border-slate-200 bg-white p-10 shadow-sm">
-          <h1 className="text-3xl font-semibold">Experiment Data Collection</h1>
+          <h1 className="text-3xl font-semibold text-gray-950">Experiment Data Collection</h1>
           <p className="mt-4 text-slate-900">Failed to load experiment events.</p>
           <pre className="mt-4 rounded-xl bg-slate-100 p-4 text-xs text-red-900">
             {error.message}
@@ -81,7 +81,7 @@ export default async function EventsDashboardPage() {
   return (
     <div className="min-h-screen bg-zinc-50 py-16 px-4">
       <div className="max-w-7xl mx-auto rounded-3xl border border-slate-200 bg-white p-10 shadow-sm">
-        <h1 className="text-3xl font-semibold">Experiment Data Collection</h1>
+        <h1 className="text-3xl font-semibold text-gray-950">Experiment Data Collection</h1>
         <p className="mt-3 text-slate-900">Latest 100 logged events from the online experiment.</p>
         <p className="mt-1 text-sm text-slate-800">Refresh the page to see newly collected events.</p>
 
@@ -112,21 +112,21 @@ export default async function EventsDashboardPage() {
                   key={event.id}
                   className={index % 2 === 0 ? "bg-white" : "bg-slate-50"}
                 >
-                  <td className="border-b border-slate-200 px-3 py-2 font-medium">{event.id}</td>
-                  <td className="border-b border-slate-200 px-3 py-2">{event.created_at}</td>
-                  <td className="border-b border-slate-200 px-3 py-2">{event.participant_id ?? "-"}</td>
-                  <td className="border-b border-slate-200 px-3 py-2">{event.session_id ?? "-"}</td>
-                  <td className="border-b border-slate-200 px-3 py-2">{event.condition ?? "-"}</td>
-                  <td className="border-b border-slate-200 px-3 py-2">{event.event_type ?? "-"}</td>
-                  <td className="border-b border-slate-200 px-3 py-2">{event.client_timestamp ?? "-"}</td>
-                  <td className="border-b border-slate-200 px-3 py-2">{event.server_timestamp ?? "-"}</td>
-                  <td className="border-b border-slate-200 px-3 py-2">{event.time_since_page_load ?? "-"}</td>
-                  <td className="border-b border-slate-200 px-3 py-2">{event.page ?? "-"}</td>
-                  <td className="border-b border-slate-200 px-3 py-2">{event.search_query ?? "-"}</td>
-                  <td className="border-b border-slate-200 px-3 py-2">{event.product_id ?? "-"}</td>
-                  <td className="border-b border-slate-200 px-3 py-2 max-w-xs truncate">{event.product_name ?? "-"}</td>
-                  <td className="border-b border-slate-200 px-3 py-2">{event.product_price ?? "-"}</td>
-                  <td className="border-b border-slate-200 px-3 py-2">{event.product_label ?? "-"}</td>
+                  <td className="border-b border-slate-200 px-3 py-2 font-medium text-gray-800">{event.id}</td>
+                  <td className="border-b border-slate-200 px-3 py-2 text-gray-800">{event.created_at}</td>
+                  <td className="border-b border-slate-200 px-3 py-2 text-gray-800">{event.participant_id ?? "-"}</td>
+                  <td className="border-b border-slate-200 px-3 py-2 text-gray-800">{event.session_id ?? "-"}</td>
+                  <td className="border-b border-slate-200 px-3 py-2 text-gray-800">{event.condition ?? "-"}</td>
+                  <td className="border-b border-slate-200 px-3 py-2 text-gray-800">{event.event_type ?? "-"}</td>
+                  <td className="border-b border-slate-200 px-3 py-2 text-gray-800">{event.client_timestamp ?? "-"}</td>
+                  <td className="border-b border-slate-200 px-3 py-2 text-gray-800">{event.server_timestamp ?? "-"}</td>
+                  <td className="border-b border-slate-200 px-3 py-2 text-gray-800">{event.time_since_page_load ?? "-"}</td>
+                  <td className="border-b border-slate-200 px-3 py-2 text-gray-800">{event.page ?? "-"}</td>
+                  <td className="border-b border-slate-200 px-3 py-2 text-gray-800">{event.search_query ?? "-"}</td>
+                  <td className="border-b border-slate-200 px-3 py-2 text-gray-800">{event.product_id ?? "-"}</td>
+                  <td className="border-b border-slate-200 px-3 py-2 max-w-xs truncate text-gray-800">{event.product_name ?? "-"}</td>
+                  <td className="border-b border-slate-200 px-3 py-2 text-gray-800">{event.product_price ?? "-"}</td>
+                  <td className="border-b border-slate-200 px-3 py-2 text-gray-800">{event.product_label ?? "-"}</td>
                 </tr>
               ))}
             </tbody>
