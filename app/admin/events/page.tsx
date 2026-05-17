@@ -46,6 +46,7 @@ async function fetchExperimentEvents() {
 
   const data = response.data as ExperimentEvent[] | null;
   const error = response.error;
+console.log('data', data);
 
   return { data, error, missingConfig: false };
 }
