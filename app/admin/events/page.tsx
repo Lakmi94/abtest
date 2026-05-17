@@ -5,7 +5,7 @@ type ExperimentEvent = {
   created_at: string;
   participant_id: string | null;
   session_id: string | null;
-  condition: string | null;
+  condition: number | null;
   event_type: string | null;
   client_timestamp: string | null;
   server_timestamp: string | null;

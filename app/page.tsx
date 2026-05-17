@@ -5,7 +5,7 @@ import ProductCard from "./components/productCard";
 import productData from "./products.json";
 
 export default function Home() {
-  const [currentValue, setCurrentValue] = useState<string>("A");
+  const [currentValue, setCurrentValue] = useState<number>(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [participantId, setParticipantId] = useState<string>("");
   const [sessionId, setSessionId] = useState<string>("");
@@ -15,7 +15,7 @@ export default function Home() {
   const searchLoggedRef = useRef(false);
 
   useEffect(() => {
-    const currentVersion = Math.random() < 0.5 ? "A" : "B";
+    const currentVersion = Math.random() < 0.5 ? 1 : 2;
 
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setCurrentValue(currentVersion);
