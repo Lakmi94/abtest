@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 import { createClient } from "@supabase/supabase-js";
 
 type ExperimentEvent = {
@@ -41,8 +44,7 @@ async function fetchExperimentEvents() {
     .select(
       "id,created_at,participant_id,session_id,condition,event_type,client_timestamp,server_timestamp,time_since_page_load,page,search_query,product_id,product_name,product_price,product_label"
     )
-    .order("created_at", { ascending: false })
-    .limit(100);
+    .order("created_at", { ascending: false });
 
   const data = response.data as ExperimentEvent[] | null;
   const error = response.error;
@@ -82,7 +84,7 @@ export default async function EventsDashboardPage() {
     <div className="min-h-screen bg-zinc-50 py-16 px-4">
       <div className="max-w-7xl mx-auto rounded-3xl border border-slate-200 bg-white p-10 shadow-sm">
         <h1 className="text-3xl font-semibold">Experiment Data Collection</h1>
-        <p className="mt-3 text-slate-600">Latest 100 logged events from the online experiment.</p>
+        <p className="mt-3 text-slate-600">All logged events from the online experiment.</p>
         <p className="mt-1 text-sm text-slate-500">Refresh the page to see newly collected events.</p>
 
         <div className="mt-8 overflow-x-auto rounded-xl border border-slate-200">
