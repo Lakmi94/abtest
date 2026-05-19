@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 import { createClient } from "@supabase/supabase-js";
 
 type ExperimentEvent = {
@@ -41,8 +44,7 @@ async function fetchExperimentEvents() {
     .select(
       "id,created_at,participant_id,session_id,condition,event_type,client_timestamp,server_timestamp,time_since_page_load,page,search_query,product_id,product_name,product_price,product_label"
     )
-    .order("created_at", { ascending: false })
-    .limit(100);
+    .order("created_at", { ascending: false });
 
   const data = response.data as ExperimentEvent[] | null;
   const error = response.error;
