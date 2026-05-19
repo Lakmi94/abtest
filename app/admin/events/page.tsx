@@ -84,7 +84,7 @@ export default async function EventsDashboardPage() {
     <div className="min-h-screen bg-zinc-50 py-16 px-4">
       <div className="max-w-7xl mx-auto rounded-3xl border border-slate-200 bg-white p-10 shadow-sm">
         <h1 className="text-3xl font-semibold text-gray-950">Experiment Data Collection</h1>
-        <p className="mt-3 text-slate-900">Latest 100 logged events from the online experiment.</p>
+        <p className="mt-3 text-slate-900">All logged events from the online experiment.</p>
         <p className="mt-1 text-sm text-slate-800">Refresh the page to see newly collected events.</p>
 
         <div className="mt-8 overflow-x-auto rounded-xl border border-slate-200">
